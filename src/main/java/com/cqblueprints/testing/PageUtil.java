@@ -86,8 +86,8 @@ public enum PageUtil {
 			httpPost.setEntity(new UrlEncodedFormEntity(nvps));
 			HttpClientContext postContext = getAuthenticationContext(user, pass);
 			CloseableHttpResponse response = httpclient.execute(httpPost, postContext);
-			httpPost.releaseConnection();
 			String responseStr = EntityUtils.toString(response.getEntity());
+			httpPost.releaseConnection();
 
 			System.out.println("Response");
 			System.out.println(responseStr);

@@ -22,7 +22,7 @@ public class AuthorPageActions {
 			if (card.getAttribute("data-group").equals(".hidden")) {
 				continue;
 			}
-			wait.until(ExpectedConditions.visibilityOf(card));
+            wait.until(ExpectedConditions.visibilityOf(card));
 			break;
 		}
 		
@@ -424,14 +424,13 @@ public class AuthorPageActions {
 				}
 			}
 			if (okButton == null) {
-				okButton = driver.findElement(By
-						.xpath("//button[@title='Done']"));
+				okButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@title='Done']")));
 			}
 
 			driver.switchTo().activeElement();
-			okButton.click();
+			wait.until(ExpectedConditions.elementToBeClickable(okButton)).click();
 		} catch (Exception e) {
-			Assert.fail("Dialog confirm button is not available.");
+			Assert.fail("Dialog confirm button is not available: " + e.getMessage());
 		}
 	}
 	
